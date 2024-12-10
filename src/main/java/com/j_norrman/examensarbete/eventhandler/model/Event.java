@@ -1,4 +1,4 @@
-package com.j_norrman.examensarbete.model;
+package com.j_norrman.examensarbete.eventhandler.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

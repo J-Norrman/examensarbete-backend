@@ -1,7 +1,7 @@
-package com.j_norrman.examensarbete.controller;
+package com.j_norrman.examensarbete.eventhandler.controller;
 
-import com.j_norrman.examensarbete.model.EventDto;
-import com.j_norrman.examensarbete.service.EventService;
+import com.j_norrman.examensarbete.eventhandler.model.EventDto;
+import com.j_norrman.examensarbete.eventhandler.service.EventService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

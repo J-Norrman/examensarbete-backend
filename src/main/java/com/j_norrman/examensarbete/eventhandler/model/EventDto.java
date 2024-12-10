@@ -1,4 +1,4 @@
-package com.j_norrman.examensarbete.model;
+package com.j_norrman.examensarbete.eventhandler.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

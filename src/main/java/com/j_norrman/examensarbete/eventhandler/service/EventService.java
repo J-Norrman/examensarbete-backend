@@ -1,8 +1,8 @@
-package com.j_norrman.examensarbete.service;
+package com.j_norrman.examensarbete.eventhandler.service;
 
-import com.j_norrman.examensarbete.model.Event;
-import com.j_norrman.examensarbete.model.EventDto;
-import com.j_norrman.examensarbete.repository.EventRepository;
+import com.j_norrman.examensarbete.eventhandler.model.Event;
+import com.j_norrman.examensarbete.eventhandler.model.EventDto;
+import com.j_norrman.examensarbete.eventhandler.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
