@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -28,16 +29,26 @@ public class SkillGemController {
     }
 
     @GetMapping("/fetch")
-    public ResponseEntity<Map<String,List<SkillGemDto>>> fetchSkillGem() {
+    public ResponseEntity<List<SkillGemDto>> fetchSkillGem() {
         System.out.println("fetching data from api");
         try {
-            List<SkillGemDto> allGems = skillGemService.fetchSkillGems();
-            Map<String, List<SkillGemDto>> categorized = skillGemService.categorizeGems(allGems);
-            return new ResponseEntity<>(categorized,HttpStatus.OK);
+            List<SkillGemDto> allGems = skillGemService.fetchSkillGems("Settlers");
+            //Map<String, List<SkillGemDto>> categorized = skillGemService.categorizeGems(allGems);
+            return new ResponseEntity<>(allGems,HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+    @GetMapping("/store")
+    public ResponseEntity<Void> storeSkillGem(@RequestParam String league) {
+        System.out.println("store data from api");
+        try{
+            skillGemService.fetchAndSaveGems(league);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

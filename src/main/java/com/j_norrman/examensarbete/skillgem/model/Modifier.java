@@ -7,5 +7,4 @@ import lombok.Data;
 @Data
 public class Modifier {
     private String text;
-    private boolean optional;
 }
