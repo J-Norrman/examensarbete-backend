@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/skill-gems")
 public class SkillGemController {
+
+    // TODO - store in db with categories
+
     @Autowired
     private final SkillGemService skillGemService;
 
@@ -24,11 +28,12 @@ public class SkillGemController {
     }
 
     @GetMapping("/fetch")
-    public ResponseEntity<List<SkillGemDto>> fetchSkillGem() {
+    public ResponseEntity<Map<String,List<SkillGemDto>>> fetchSkillGem() {
         System.out.println("fetching data from api");
         try {
-            List<SkillGemDto> gems = skillGemService.fetchSkillGems();
-            return new ResponseEntity<>(gems,HttpStatus.OK);
+            List<SkillGemDto> allGems = skillGemService.fetchSkillGems();
+            Map<String, List<SkillGemDto>> categorized = skillGemService.categorizeGems(allGems);
+            return new ResponseEntity<>(categorized,HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -10,4 +10,5 @@ public class SkillGem {
     private String name;
     private String icon;
     private List<Modifier> explicitModifiers;
+    private String category;
 }
