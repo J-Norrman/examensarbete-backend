@@ -4,6 +4,9 @@ import com.j_norrman.examensarbete.skillgem.model.SkillGem;
 import com.j_norrman.examensarbete.skillgem.model.SkillGemDto;
 import com.j_norrman.examensarbete.skillgem.model.SkillGemResponse;
 import com.j_norrman.examensarbete.skillgem.repository.SkillGemRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,7 +32,7 @@ public class SkillGemService {
             return List.of();
         }
         return response.lines.stream()
-                .map(item -> new SkillGemDto(item.getId(), item.getName(), item.getIcon(), item.getExplicitModifiers()
+                .map(item -> new SkillGemDto(item.getId(), item.getName(), item.getIcon(), item.getCategory(), item.getExplicitModifiers()
                 ))
                 .collect(Collectors.toList());
     }
@@ -69,6 +72,12 @@ public class SkillGemService {
         System.out.println("Gems in DB: " + savedGems.size());
         //savedGems.forEach(g -> System.out.println(g.getName() + " - " + g.getCategory()));
     }
+
+    @Transactional
+    public Page<SkillGem> getAllGems(Pageable pageable){
+        return skillGemRepository.findAll(pageable);
+    }
+
     @Deprecated
     public Map<String,List<SkillGemDto>> categorizeGems(List<SkillGemDto> allGems){
         List<SkillGemDto> awakenedGems = new ArrayList<>();

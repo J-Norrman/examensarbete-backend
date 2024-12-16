@@ -13,6 +13,7 @@ public class SkillGemDto {
     private Long id;
     private String name;
     private String icon;
+    private String category;
     private List<Modifier> explicitModifiers;
 
 }
