@@ -25,7 +25,6 @@ import java.util.Map;
 @RequestMapping("/api/skill-gems")
 public class SkillGemController {
 
-    // TODO - store in db with categories
 
     @Autowired
     private final SkillGemService skillGemService;
@@ -39,7 +38,6 @@ public class SkillGemController {
         System.out.println("fetching data from api");
         try {
             List<SkillGemDto> allGems = skillGemService.fetchSkillGems("Settlers");
-            //Map<String, List<SkillGemDto>> categorized = skillGemService.categorizeGems(allGems);
             return new ResponseEntity<>(allGems,HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
