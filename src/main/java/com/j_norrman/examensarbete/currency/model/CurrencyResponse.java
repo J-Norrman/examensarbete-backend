@@ -15,7 +15,7 @@ public class CurrencyResponse {
         private String currencyTypeName;
         private PayOrReceive pay;
         private PayOrReceive receive;
-        private String detailsId; // Used to map with currencyDetails
+        private String detailsId;
     }
 
     @Data
