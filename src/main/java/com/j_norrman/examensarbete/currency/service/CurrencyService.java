@@ -93,7 +93,7 @@ public class CurrencyService {
         long count = currencyRepository.count();
         System.out.println("Total currencies in DB: " + count);
     }
-    @Scheduled(fixedRate = 600000) // cron = "0 0 0 * * ?"
+    @Scheduled(fixedRate = 6000000) // cron = "0 0 0 * * ?"
     public void scheduledFetchAndStore() {
         String league = "Settlers";
         log.info("Scheduled task: Fetching and saving currencies for league: {}", league);

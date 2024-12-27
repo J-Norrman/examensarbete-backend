@@ -1,9 +1,11 @@
-package com.j_norrman.examensarbete.eventhandler.model;
+package com.j_norrman.examensarbete.eventhandlerMarkedForRemoval.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+
+@Deprecated
 @Entity
 @Table(name = "event_logs")
 @Data

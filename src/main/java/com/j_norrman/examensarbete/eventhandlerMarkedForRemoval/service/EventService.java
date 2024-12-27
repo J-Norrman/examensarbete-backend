@@ -1,8 +1,8 @@
-package com.j_norrman.examensarbete.eventhandler.service;
+package com.j_norrman.examensarbete.eventhandlerMarkedForRemoval.service;
 
-import com.j_norrman.examensarbete.eventhandler.model.Event;
-import com.j_norrman.examensarbete.eventhandler.model.EventDto;
-import com.j_norrman.examensarbete.eventhandler.repository.EventRepository;
+import com.j_norrman.examensarbete.eventhandlerMarkedForRemoval.model.Event;
+import com.j_norrman.examensarbete.eventhandlerMarkedForRemoval.model.EventDto;
+import com.j_norrman.examensarbete.eventhandlerMarkedForRemoval.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Deprecated
 @Service
 public class EventService {
 
