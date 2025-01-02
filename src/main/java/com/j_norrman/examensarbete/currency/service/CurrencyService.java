@@ -55,16 +55,13 @@ public class CurrencyService {
                 .collect(Collectors.toList());
     }
 
-    @Transactional
     public void saveCurrencies(List<CurrencyDto> currencies) {
         for (CurrencyDto dto : currencies) {
             if (dto.getCurrencyTypeName() == null) {
                 log.warn("Skipping null currency name");
                 continue;
             }
-
             Currency existingCurrency = currencyRepository.findByCurrencyTypeName(dto.getCurrencyTypeName());
-
             if (existingCurrency != null) {
                 existingCurrency.setChaosEquivalent(dto.getChaosEquivalent());
                 existingCurrency.setIcon(dto.getIcon());
@@ -85,14 +82,13 @@ public class CurrencyService {
         }
     }
 
-    @Transactional
     public void fetchAndSaveCurrencies(String league) {
         List<CurrencyDto> currencies = fetchCurrencyData(league);
         saveCurrencies(currencies);
-
         long count = currencyRepository.count();
         System.out.println("Total currencies in DB: " + count);
     }
+
     @Scheduled(fixedRate = 6000000) // cron = "0 0 0 * * ?"
     public void scheduledFetchAndStore() {
         String league = "Settlers";

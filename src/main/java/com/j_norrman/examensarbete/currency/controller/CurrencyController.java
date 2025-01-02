@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping("/api/currency")
 @Slf4j
 public class CurrencyController {
+
     private final CurrencyService currencyService;
 
     public CurrencyController(CurrencyService currencyService) {

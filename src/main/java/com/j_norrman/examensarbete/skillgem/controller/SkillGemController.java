@@ -25,8 +25,6 @@ import java.util.Map;
 @RequestMapping("/api/skill-gems")
 public class SkillGemController {
 
-
-    @Autowired
     private final SkillGemService skillGemService;
 
     public SkillGemController(SkillGemService skillGemService) {
@@ -42,7 +40,6 @@ public class SkillGemController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
     @GetMapping("/store")
     public ResponseEntity<Void> storeSkillGem(@RequestParam String league) {
